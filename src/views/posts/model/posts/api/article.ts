@@ -1,8 +1,8 @@
 export interface ArticleDTO {
-    userId: number;
     id: number;
     title: string;
-    body: string;
+    userId?: number;
+    body?: string;
 }
 
 export interface CreateArticleDTO {

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { getAllArticles, postArticle } from "./api/article";
-import { ArticleDTO, CreateArticleDTO } from "./api/article";
+import { getAllArticles, postArticle } from "./posts/api/article";
+import { ArticleDTO, CreateArticleDTO } from "./posts/api/article";
 
 const useArticleModel = () => {
     const [articlesData, setArticlesData] = useState<ArticleDTO[] | null>(null);
@@ -16,7 +16,7 @@ const useArticleModel = () => {
                 const response = await postArticle(createData);
 
                 if (response !== null) {
-                    setArticlesData([...articlesData, { id: response.id, name: response.name }]);
+                    setArticlesData([...articlesData, { id: response.id, title: response.title }]);
                 }
             }
         },

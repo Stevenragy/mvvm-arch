@@ -1,8 +1,8 @@
 import React from "react";
-import useArticlesViewController from "./usePostViewController";
+import usePostViewController from "./usePostViewController";
 
 const ArticlesView: React.FC = () => {
-    const { articleName, articles, navigateToArticle, onArticleNameChange, onCreateArticleClick } = useArticlesViewController();
+    const { articleName, articles, navigateToArticle, onArticleNameChange, onCreateArticleClick } = usePostViewController();
 
     return (
         <div>
