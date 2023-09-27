@@ -1,32 +1,32 @@
 import { useCallback, useState } from "react";
-import { getAllArticles, postArticle } from "./posts/api/article";
-import { ArticleDTO, CreateArticleDTO } from "./posts/api/article";
+import { getAllPosts, postPost } from "./posts/api/article";
+import { Post, CreatePost } from "./posts/api/article";
 
 const useArticleModel = () => {
-    const [articlesData, setArticlesData] = useState<ArticleDTO[] | null>(null);
+    const [postsData, setPostsData] = useState<Post[] | null>(null);
 
-    const getArticles = useCallback(async () => {
-        const articles = await getAllArticles();
-        setArticlesData(articles);
+    const getPosts = useCallback(async () => {
+        const posts = await getAllPosts();
+        setPostsData(posts);
     }, []);
 
-    const createArticle = useCallback(
-        async (createData: CreateArticleDTO) => {
-            if (Array.isArray(articlesData)) {
-                const response = await postArticle(createData);
+    const createPost = useCallback(
+        async (createData: CreatePost) => {
+            if (Array.isArray(postsData)) {
+                const response = await postPost(createData);
 
                 if (response !== null) {
-                    setArticlesData([...articlesData, { id: response.id, title: response.title }]);
+                    setPostsData([...postsData, { id: response.id, title: response.title }]);
                 }
             }
         },
-        [articlesData]
+        [postsData]
     );
 
     return {
-        articles: articlesData,
-        createArticle,
-        getArticles,
+        posts: postsData,
+        createPost,
+        getPosts,
     };
 };
 

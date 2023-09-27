@@ -1,11 +1,11 @@
 import usePostModel from "./model/usePostModel";
 
 const useArticleViewModel = () => {
-    const { articles, createArticle, getArticles } = usePostModel();
+    const { posts, createPost, getPosts } = usePostModel();
     return {
-        articles,
-        createArticle,
-        getArticles,
+        posts,
+        createPost,
+        getPosts,
     };
 };
 

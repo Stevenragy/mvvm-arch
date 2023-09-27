@@ -5,12 +5,12 @@ import usePostViewModel from "./usePostViewModel";
 
 const useArticlesViewController = () => {
     const navigate = useNavigate();
-    const [articleName, setArticleName] = useState("");
-    const { articles, createArticle, getArticles } = usePostViewModel();
+    const [postName, setPostName] = useState("");
+    const { posts, createPost, getPosts } = usePostViewModel();
 
-    const onCreateArticleClick = useCallback(async () => {
-        await createArticle({ name: articleName });
-    }, [createArticle, articleName]);
+    const onCreatePostClick = useCallback(async () => {
+        await createPost({ name: postName });
+    }, [createPost, postName]);
 
     const navigateToArticle = useCallback(
         (articleId: number) => {
@@ -20,15 +20,15 @@ const useArticlesViewController = () => {
     );
 
     useEffect(() => {
-        getArticles();
-    }, [getArticles]);
+        getPosts();
+    }, [getPosts]);
 
     return {
-        articleName,
-        articles,
+        postName,
+        posts,
         navigateToArticle,
-        onCreateArticleClick,
-        onArticleNameChange: setArticleName,
+        onCreatePostClick,
+        onArticleNameChange: setPostName,
     };
 };
 

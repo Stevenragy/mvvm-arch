@@ -1,17 +1,17 @@
-export interface ArticleDTO {
+export interface Post {
     id: number;
     title: string;
     userId?: number;
     body?: string;
 }
 
-export interface CreateArticleDTO {
+export interface CreatePost {
     name: string;
 }
 
 const API_URL = "https://jsonplaceholder.typicode.com";
 
-export const getAllArticles = async (): Promise<ArticleDTO[] | null> => {
+export const getAllPosts = async (): Promise<Post[] | null> => {
     const response = await fetch(`${API_URL}/posts`);
     if (!response.ok) {
         throw new Error("Failed to get all articles");
@@ -20,7 +20,7 @@ export const getAllArticles = async (): Promise<ArticleDTO[] | null> => {
     return data;
 };
 
-export const postArticle = async (createData: CreateArticleDTO): Promise<ArticleDTO | null> => {
+export const postPost = async (createData: CreatePost): Promise<Post | null> => {
     const response = await fetch(`${API_URL}/posts`, {
         method: "POST",
         headers: {
